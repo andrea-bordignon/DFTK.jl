@@ -7,10 +7,10 @@ struct LocalNonlinearity
     ddf
 end
 
-struct TermLocalNonlinearity{TF} <: TermNonlinear
-    f::TF
-    df::TF
-    ddf::TF
+struct TermLocalNonlinearity <: TermNonlinear
+    f
+    df
+    ddf
 end
 
 (L::LocalNonlinearity)(::AbstractBasis) = TermLocalNonlinearity(L.f,L.df,L.ddf) # this syntax defines a function that can be called by an object of type ::LocalNonlinearity on an object of type ::AbstractBasis. It seems redundant but it is necessary for the compatibility with the rest of the codebase probabily 
